@@ -19,7 +19,7 @@ spec:
       labels:
         app.kubernetes.io/name: {{`'{{path.basename}}'`}}
     spec:
-      project: {{ .Values.project }}
+      project: {{ .Values.appsProject }}
       source:
         path: {{ .Values.path }}
         repoURL: {{ .Values.repo }}
