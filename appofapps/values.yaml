@@ -1,4 +1,5 @@
 name: argocd-appofapps
+namespace: argo
 path: applicationset
 project: default
 automatedSync: false

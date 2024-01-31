@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Values.name }}
   name: {{ .Values.name }}
-  namespace: argocd
+  namespace: {{ .Values.namespace }}
 spec:
   ignoreDifferences:
   - group: argoproj.io
@@ -22,7 +22,7 @@ spec:
       valueFiles:
       - {{ .Values.valuesFileName }}
   destination:
-    namespace: argocd
+    namespace: {{ .Values.namespace }}
     server: {{ .Values.server }}
   {{- if .Values.automatedSync }}
   syncPolicy:

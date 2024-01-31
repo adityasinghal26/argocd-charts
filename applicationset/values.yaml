@@ -1,6 +1,6 @@
 project: default
 name: argocd-appset
-namespace: argocd
+namespace: argo
 repo: https://github.com/adityasinghal26/argocd-charts
 targetRevision: main
 appsDirectoryPath: apps/*
