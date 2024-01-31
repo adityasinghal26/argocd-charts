@@ -6,3 +6,4 @@ targetRevision: main
 appsDirectoryPath: apps/*
 automatedSync: false
 server: https://kubernetes.default.svc
+valuesFileName: values.yaml
