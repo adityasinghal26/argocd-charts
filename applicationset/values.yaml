@@ -1,9 +1,9 @@
-project: argocd-charts-project
-name: argocd-appset
+appsProject: argocd-appset-project
+appsName: argocd-appset
+appsDirectoryPath: apps/*
 namespace: argo
 repo: https://github.com/adityasinghal26/argocd-charts
 targetRevision: main
-appsDirectoryPath: apps/*
-automatedSync: false
-server: https://kubernetes.default.svc
 valuesFileName: values.yaml
+server: https://kubernetes.default.svc
+automatedSync: false

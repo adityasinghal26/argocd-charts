@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: {{ .Values.name }}
+  name: {{ .Values.appsName }}
   namespace: {{ .Values.namespace }}
   labels:
-    app.kubernetes.io/name: {{ .Values.name }}
+    app.kubernetes.io/name: {{ .Values.appsName }}
 spec:
   generators:
   - git:
