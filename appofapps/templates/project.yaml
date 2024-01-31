@@ -35,6 +35,8 @@ spec:
     kind: Deployment
   - group: 'apps'
     kind: StatefulSet
+  orphanedResources:
+    warn: true
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
