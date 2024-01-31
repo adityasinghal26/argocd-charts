@@ -21,7 +21,7 @@ spec:
     spec:
       project: {{ .Values.appsProject }}
       source:
-        path: {{ .Values.path }}
+        path: {{ .Values.appsDirectoryPath }}
         repoURL: {{ .Values.repo }}
         targetRevision: {{ .Values.targetRevision }}
         helm:
