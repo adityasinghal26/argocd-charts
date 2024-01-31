@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: {{ .Values.name }}
+  name: {{ .Values.name }}
+  namespace: argocd
+spec:
+  ignoreDifferences:
+  - group: argoproj.io
+    jsonPointers:
+    - /status
+    kind: Application
+  project: {{ .Values.project }}
+  source:
+    path: {{ .Values.path }}
+    repoURL: {{ .Values.repo }}
+    targetRevision: {{ .Values.targetRevision }}
+    helm:
+      valueFiles:
+      - {{ .Values.valuesFileName }}
+  destination:
+    namespace: argocd
+    server: {{ .Values.server }}
+  {{- if .Values.automatedSync }}
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - FailOnSharedResource=true
+    - RespectIgnoreDifferences=true
+    - Validate=true
+  {{- end }}
+  {{- if not .Values.automatedSync }}
+  syncPolicy:
+    syncOptions:
+    - ApplyOutOfSyncOnly=true
+    - CreateNamespace=true
+    - FailOnSharedResource=true
+    - RespectIgnoreDifferences=true
+    - Validate=true
+  {{- end }}

@@ -1,0 +1,8 @@
+name: argocd-appofapps
+path: applicationset
+project: default
+automatedSync: false
+server: https://kubernetes.default.svc
+repo: https://github.com/adityasinghal26/argocd-charts
+targetRevision: main
+valuesFileName: values.yaml
