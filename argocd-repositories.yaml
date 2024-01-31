@@ -1,0 +1,18 @@
+# Follow more repository formats at below documentation link
+# https://argo-cd.readthedocs.io/en/stable/operator-manual/argocd-repositories-yaml/
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-charts-https-repo
+  namespace: argo
+  labels:
+    argocd.argoproj.io/secret-type: repository
+stringData:
+  type: git
+  project: default
+  url: https://github.com/adityasinghal26/argocd-charts
+  # password: my-password # Ignoring due to public repo 
+  # username: adityasinghal26 # Ignoring due to public repo
+  insecure: "true" # Ignore validity of server's TLS certificate. Defaults to "false"
+  forceHttpBasicAuth: "false" # Skip auth method negotiation and force usage of HTTP basic auth. Defaults to "false"
+  enableLfs: "false" # Enable git-lfs for this repository. Defaults to "false"

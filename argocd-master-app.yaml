@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-master-app
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: argocd-master-app
+  namespace: argo
+spec:
+  destination:
+    name: ''
+    namespace: argo
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: appofapps
+    repoURL: 'https://github.com/adityasinghal26/argocd-charts'
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values.yaml
+  sources: []
+  project: default
+  ignoreDifferences:
+    - group: argoproj.io
+      jsonPointers:
+        - /status
+      kind: Application
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - FailOnSharedResource=true
+      - RespectIgnoreDifferences=true
+      - Validate=true
