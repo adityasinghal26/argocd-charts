@@ -1,4 +1,4 @@
-project: default
+project: argocd-charts-project
 name: argocd-appset
 namespace: argo
 repo: https://github.com/adityasinghal26/argocd-charts

@@ -1,7 +1,7 @@
 name: argocd-appofapps
 namespace: argo
 path: applicationset
-project: default
+project: argocd-charts-project
 automatedSync: false
 server: https://kubernetes.default.svc
 repo: https://github.com/adityasinghal26/argocd-charts
